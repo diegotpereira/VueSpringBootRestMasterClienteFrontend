@@ -36,24 +36,31 @@ export default {
     name: "cliente",
     props: ["cliente"],
 
-    methods: {
-        // atualizarAtivo(status) {
-        //     var data = {
-        //         id: this.cliente.id,
-        //         nome: this.cliente.nome,
-        //         idade: this.cliente.idade,
-        //         ativo: status
-        //     };
+//     computed: {
+//     id() {
+//       return this.$route.params.id;
+//     },
+//   },
 
-        //     http.put("/cliente/" + this.cliente.id, data)
-        //         .then(response => {
-        //             this.cliente.ativo = response.data.ativo;
-        //             console.log(response.data);
-        //         })
-        //         .catch(e => {
-        //             console.log(e);
-        //         });
-        // },
+    methods: {
+        atualizarAtivo(status) {
+            var data = {
+                id: this.cliente.id,
+                nome: this.cliente.nome,
+                idade: this.cliente.idade,
+                ativo: status
+            };
+
+            http.put("/cliente/" + this.cliente.id, data)
+                .then(response => {
+                    console.log(response.data);
+                    // this.cliente.ativo = response.data.status; verificar
+                    
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
 
         excluirCliente() {
             http.delete("/cliente/" + this.cliente.id)
